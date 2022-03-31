@@ -156,6 +156,9 @@ public class EmployeeServiceImplTest {
                     Optional.of(0), Optional.of(0), Optional.of("name"));
 
             List<Employee> resultList = service.getPersons(request).getResults();
+            for(Employee e : resultList) {
+                System.out.println(e.toString());
+            }
             Assertions.assertEquals(1, result);
             Assertions.assertEquals(11, resultList.size());
         } catch (IOException io) {
