@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import java.util.Optional;
 
+@Setter
 @Getter
 @ToString
 public class EmployeeRequest {
@@ -41,9 +42,9 @@ public class EmployeeRequest {
         }
     }
 
-    public static EmployeeRequest createPersonRequest(Optional<Double> min, Optional<Double> max,
-                                                      Optional<Integer> offset, Optional<Integer> limit,
-                                                      Optional<String> sort
+    public static EmployeeRequest createEmployeeRequest(Optional<Double> min, Optional<Double> max,
+                                                        Optional<Integer> offset, Optional<Integer> limit,
+                                                        Optional<String> sort
     ) {
         return new EmployeeRequest(min, max, offset, limit, sort);
     }

@@ -51,7 +51,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void getEmployee_LimitFlagTrue_OffsetFlagTrue_SortFlagTrue_Success() {
 
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(1), Optional.of(2), Optional.of("name"));
 
         try {
@@ -66,7 +66,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void getEmployee_LimitFlagTrue_OffsetFlagTrue_SortFlagFalse_Success() {
 
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(1), Optional.of(2), Optional.of(""));
 
         try {
@@ -80,7 +80,7 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void getEmployee_LimitFlagTrue_OffsetFlagTrue_SortFlagTrue_Fail_DueToHighOffset() {
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(6), Optional.of(1), Optional.of(""));
 
         try {
@@ -94,7 +94,7 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void getEmployee_LimitFlagFalse_OffsetFlagTrue_SortFlagTrue_Success() {
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(3), Optional.of(0), Optional.of("name"));
 
         try {
@@ -107,7 +107,7 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void getEmployee_LimitFlagFalse_OffsetFlagTrue_SortFlagTrue_False() {
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(3), Optional.of(0), Optional.of(""));
 
         try {
@@ -120,7 +120,7 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void getEmployee_LimitFlagFalse_OffsetFlagFalse_SortFlagTrue_Success() {
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(0), Optional.of(0), Optional.of("name"));
 
         try {
@@ -133,7 +133,7 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void getEmployee_LimitFlagFalse_OffsetFlagFalse_SortFlagFalse_Success() {
-        EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+        EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                 Optional.of(0), Optional.of(0), Optional.of(""));
 
         try {
@@ -152,7 +152,7 @@ public class EmployeeServiceImplTest {
                     new FileInputStream("src/test/resources/data/salaryCsv.csv"));
 
             int result = service.batchUpload(file);
-            EmployeeRequest request = EmployeeRequest.createPersonRequest(Optional.of(0.00), Optional.of(4000.0),
+            EmployeeRequest request = EmployeeRequest.createEmployeeRequest(Optional.of(0.00), Optional.of(4000.0),
                     Optional.of(0), Optional.of(0), Optional.of("name"));
 
             List<Employee> resultList = service.getPersons(request).getResults();
@@ -160,7 +160,7 @@ public class EmployeeServiceImplTest {
                 System.out.println(e.toString());
             }
             Assertions.assertEquals(1, result);
-            Assertions.assertEquals(11, resultList.size());
+            Assertions.assertEquals(12, resultList.size());
         } catch (IOException io) {
             Assertions.fail();
         } catch (EmployeeException ee) {
